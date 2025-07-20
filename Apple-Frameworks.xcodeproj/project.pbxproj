@@ -65,8 +65,8 @@
 		390CDD1D2E2694FF004CA46D = {
 			isa = PBXGroup;
 			children = (
-				390CDD282E2694FF004CA46D /* Apple-Frameworks */,
 				390CDD272E2694FF004CA46D /* Products */,
+				390CDD282E2694FF004CA46D /* Apple-Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
