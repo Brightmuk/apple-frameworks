@@ -14,26 +14,28 @@ struct FrameworkGridView: View {
     var columns: [GridItem] = [GridItem(.flexible()),GridItem(.flexible()),GridItem(.flexible())]
     
     var body: some View {
-        NavigationView{
-            ScrollView{
-                LazyVGrid(columns: columns){
-                    ForEach(MockData.frameworks){
-                        framework in
+        NavigationStack{
+            
+            List{
+                ForEach(MockData.frameworks){
+                    framework in 
+                    NavigationLink(destination: FrameworkDetailView(framework:framework)){
                         FrameworkTile(framework: framework)
-                            .onTapGesture {
-                                viewModel.selectedFramework = framework
-                            }
                     }
-                   
+                        
                 }
             }
+            
             .navigationTitle("Frameworks")
-            .sheet(isPresented: $viewModel.isShowingDetailView){
-                FrameworkDetailView(framework: viewModel.selectedFramework ?? MockData.defaultFramework, isShowingDetailView: $viewModel.isShowingDetailView)
-            }
+        
+            
         }
+        .accentColor(Color(.label))
         
     }
 }
 
+#Preview {
+    FrameworkGridView()
+}
 
